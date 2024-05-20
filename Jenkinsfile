@@ -5,7 +5,7 @@ pipeline {
          stage('Install Dependencies') {
             steps {
                 catchError {
-                    bat 'npm install'
+                    sh 'npm install'
                 }
             }
         }
@@ -13,7 +13,7 @@ pipeline {
         stage('Install express') {
             steps {
                 catchError {
-                    bat 'npm install express'
+                    sh 'npm install express'
                 }
             }
         }
@@ -21,7 +21,7 @@ pipeline {
         stage('Install dotenv') {
             steps {
                 catchError {
-                    bat 'npm install dotenv'
+                    sh 'npm install dotenv'
                 }
             }
         }
@@ -29,7 +29,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 catchError {
-                    bat 'node index.js'
+                    sh 'node index.js'
                 }
             }
         }
