@@ -30,7 +30,7 @@ pipeline {
             steps {
                 catchError {
                     
-                    sh 'node index.js &'
+                    sh 'node index.js'
                 }
             }
         }
