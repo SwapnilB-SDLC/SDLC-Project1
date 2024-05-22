@@ -29,6 +29,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 catchError {
+                    sh 'node index.js'
                     echo "node index.js"
                 }
             }
