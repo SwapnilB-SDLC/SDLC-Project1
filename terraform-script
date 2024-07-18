@@ -1,0 +1,31 @@
+---
+- name: Install packages on all hosts
+  hosts: all
+  become: yes  # Ensure privilege escalation is enabled if needed
+
+  tasks:
+    - name: Install present version of "openjdk-11-jdk"
+      apt:
+        name: openjdk-11-jdk
+        state: present
+
+    - name: Install present version of "nodejs"
+      apt:
+        name: nodejs
+        state: present
+
+    - name: Install npm
+      apt:
+        name: npm
+        state: present
+
+    - name: Install present version of "maven"
+      apt:
+        name: maven
+        state: present
+
+    - name: Install present version of "pm2"
+      npm:
+        name: pm2
+        global: yes
+        state: present
