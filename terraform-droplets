@@ -1,0 +1,33 @@
+terraform {
+  required_providers {
+    digitalocean = {
+      source  = "digitalocean/digitalocean"
+      version = "~> 2.0"
+    }
+  }
+}
+
+provider "digitalocean" {
+  token = "dop_v1_7f50fa31bb4cfcf3ba6abb619d4555fcf550e1eb1fbbba42ce02a576a0b4a746"
+}
+
+resource "digitalocean_ssh_key" "default" {
+  name       = "default"
+  public_key = file("/root/.ssh/id_rsa.pub")
+}
+
+resource "digitalocean_droplet" "web_dev" {
+  image    = "ubuntu-20-04-x64"
+  name     = "Dev-server"
+  region   = "blr1"
+  size     = "s-1vcpu-1gb"
+  ssh_keys = ["60:83:52:3c:df:51:c0:17:92:0e:30:a1:0b:40:d2:8e"]  
+}
+
+resource "digitalocean_droplet" "web_prod" {
+  image    = "ubuntu-20-04-x64"
+  name     = "Prod-server"
+  region   = "blr1"
+  size     = "s-1vcpu-1gb"
+  ssh_keys = ["60:83:52:3c:df:51:c0:17:92:0e:30:a1:0b:40:d2:8e"]  
+}
